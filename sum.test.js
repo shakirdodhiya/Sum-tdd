@@ -18,8 +18,20 @@ describe('Add function with "15\\n6" value passed', () => {
   })
 })
 
-describe('Add function with "10\\n6-5" value passed', () => {
+describe('Add function with "//-10\\n6-5" value passed', () => {
   it('Should return 21', () => {
     expect(add("//-10\n6-5")).toBe(21);
+  })
+})
+
+describe('Add function with "//.10\\n6.5" value passed', () => {
+  it('Should return 21', () => {
+    expect(add("//.10\n6.5")).toBe(21);
+  })
+})
+
+describe('Add function with "//@10\\n6@5" value passed', () => {
+  it('Should return 21', () => {
+    expect(add("//@10\n6@5")).toBe(21);
   })
 })
