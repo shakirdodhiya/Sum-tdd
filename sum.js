@@ -3,7 +3,19 @@ const add = (numbers) => {
     return 0;
   }else{
     let sum = 0;
-    let numbers_arr = numbers.split(',');
+
+    // Default delimiter ','
+    let delimiter = ',';
+    
+    // If string starts with '//', get delimiter
+    if(numbers.startsWith('//')){
+      // To get the delimiter
+      delimiter = numbers[2];
+
+      // Get remaining string after delimiter
+      numbers = numbers.substr(3)
+    }
+    let numbers_arr = numbers.split(delimiter);
     numbers_arr.forEach((num_value) => {
       sum += num_value.includes('\n') ? add(num_value.split('\n').join(',')) : parseInt(num_value.trim(), 10)
     })
