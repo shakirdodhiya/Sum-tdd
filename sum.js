@@ -21,11 +21,14 @@ const add = (numbers) => {
       // Convert string value to integer
       const number = parseInt(num_value.trim(), 10);
       
-      // If number is negative, push to negative_numbers array
-      if(number < 0){
-        negative_numbers.push(number)
+      // Ignore value if greater than 1000
+      if(number <= 1000){
+        // If number is negative, push to negative_numbers array
+        if(number < 0){
+          negative_numbers.push(number)
+        }
+        sum += num_value.includes('\n') ? add(num_value.split('\n').join(',')) : number;
       }
-      sum += num_value.includes('\n') ? add(num_value.split('\n').join(',')) : number;
     })
 
     return negative_numbers.length ? `negative numbers not allowed ${negative_numbers.join(',')}` : sum

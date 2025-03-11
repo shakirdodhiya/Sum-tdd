@@ -44,3 +44,9 @@ describe('Add function with "15,-6,1,-5,2" value passed', () => {
     expect(add("15,-6,1,-5,2")).toBe("negative numbers not allowed -6,-5");
   })
 })
+
+describe('Add function with "15,6,1221" value passed', () => {
+  it('Should return 21', () => {
+    expect(add("15,6,1221")).toBe(21);
+  })
+})
