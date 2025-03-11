@@ -50,3 +50,17 @@ describe('Ignore value greater than 1000', () => {
     expect(add("15,6,1221")).toBe(21);
   })
 })
+
+// Delimiter '@' : Length 3
+describe('Numbers with custom delimiter "@" with different length', () => {
+  it('Should return 21', () => {
+    expect(add("//[@@@]\n10@@@6@@@5")).toBe(21);
+  })
+})
+
+// Delimiter '-' : Length 5
+describe('Numbers with custom delimiter "-" with different length', () => {
+  it('Should return 21', () => {
+    expect(add("//[-----]\n10-----6-----5")).toBe(21);
+  })
+})

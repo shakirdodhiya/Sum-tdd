@@ -10,11 +10,32 @@ const add = (numbers) => {
     
     // If string starts with '//', get delimiter
     if(numbers.startsWith('//')){
+
       // To get the delimiter
       delimiter = numbers[2];
+      let delimiter_length = 1;
+
+      // In case of custom length of delimiter
+      if(numbers.includes('//[')){
+        // Get index of first '['
+        const delimiter_start_index = numbers.indexOf('[') + 1;
+
+        // Get substring from 'delimiter_start_index'
+        const string_after_first_bracket = numbers.substr(delimiter_start_index);
+
+        // Get index of last ']'
+        const delimiter_end_index = string_after_first_bracket.indexOf(']');
+
+        // Get delimiter from string
+        delimiter = numbers.substr(delimiter_start_index, delimiter_end_index);
+
+        // Set delimiter length
+        // Add +1 to length as string have ']' after delimiter
+        delimiter_length = delimiter.length + 1
+      }
 
       // Get remaining string after delimiter
-      numbers = numbers.substr(3)
+      numbers = numbers.substr(numbers.indexOf(delimiter) + delimiter_length)
     }
     let numbers_arr = numbers.split(delimiter);
     numbers_arr.forEach((num_value) => {
